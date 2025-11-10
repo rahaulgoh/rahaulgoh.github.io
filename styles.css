@@ -21,6 +21,7 @@ html {
   --primary: #948979;
   --secondary: #393e46;
   --highlight: #7e99a3;
+  --hover-send: #cdb47c;
   --surface: rgba(34, 40, 49, 0.98);
   --project: #578e7e;
 }
@@ -31,6 +32,7 @@ html {
   --primary: #497daa;
   --secondary: #ffffff;
   --highlight: #393e46;
+  --hover-send: #4a6fa5;
   --surface: rgba(240, 237, 238, 0.98);
   --project: #4a6fa5;
 }
@@ -221,9 +223,81 @@ button[type="submit"] {
   transition: background 0.3s ease, transform 0.2s ease;
 }
 button[type="submit"]:hover {
-  background: var(--highlight);
+  background: var(--hover-send);
   transform: scale(1.05);
 }
+/* Icons inside the submit button */
+#sendBtn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  min-width: 8.5rem; /* keeps width stable across states */
+}
+
+/* Hide icons by default */
+#sendBtn .icon {
+  width: 18px;
+  height: 18px;
+  display: none;
+}
+
+/* Spinner styles */
+#sendBtn .spinner {
+  display: none;
+}
+#sendBtn.is-sending .spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+#sendBtn .spinner circle {
+  stroke: var(--bg);
+  opacity: 0.65;
+  stroke-linecap: round;
+}
+
+/* Checkmark draw animation */
+#sendBtn .check {
+  display: none;
+  stroke: var(--bg);
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+}
+#sendBtn.is-success .check {
+  display: inline-block;
+  animation: draw 600ms ease forwards;
+}
+
+/* Label visibility per state */
+#sendBtn.is-sending .btn-label { opacity: 0.5; }
+#sendBtn.is-success  .btn-label { opacity: 0; }
+
+/* Success color pulse */
+#sendBtn.is-success {
+  background: #2ecc71;            /* success green */
+  transition: background .25s ease;
+}
+
+/* Error shake */
+#sendBtn.is-error {
+  animation: shake 300ms ease;
+}
+
+/* Animations */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes shake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
+}
+
 
 /* Theme switch (sun/moon slider) */
 .switch {
@@ -324,6 +398,13 @@ button[type="submit"]:hover {
   }
 }
 
+input:focus, textarea:focus {
+  border-color: #f0c674; /* subtle gold highlight */
+  box-shadow: 0 0 6px rgba(240, 198, 116, 0.5);
+  outline: none;
+  transition: 0.3s ease;
+}
+
 /*Back to top button*/
 #back-to-top {
   position: fixed;
@@ -370,6 +451,33 @@ button[type="submit"]:hover {
   border-radius: 99%;
   transform: translate(-50%, -50%);
   transition: opacity 0.2s;
+}
+
+/* Notification styles */
+#notification {
+  position:fixed;
+  bottom: 30px;
+  right:30px;
+  background: #2ecc71;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 9999;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+#notification.error {
+  background: #e74c3c;
+}
+
+#notification.show {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* =========================================

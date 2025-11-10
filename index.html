@@ -139,10 +139,11 @@
         </p>
         <ul>
           <li>
-            Email: <a href="mailto:rahaulgoh@gmail.com">rahaulgoh@gmail.com</a>
+            <strong>Email</strong>:
+            <a href="mailto:rahaulgoh@gmail.com">rahaulgoh@gmail.com</a>
           </li>
           <li>
-            LinkedIn:
+            <strong>LinkedIn</strong>:
             <a
               href="https://www.linkedin.com/in/rahaul-goh-39a916285/"
               target="_blank"
@@ -151,7 +152,7 @@
             >
           </li>
           <li>
-            GitHub:
+            <strong>GitHub</strong>:
             <a
               href="https://github.com/rahaulgoh"
               target="_blank"
@@ -159,40 +160,59 @@
               >rahaulgoh</a
             >
           </li>
-          <li>Phone: +60 12-530 8685</li>
+          <li><strong>Phone</strong>: +60 12-530 8685</li>
         </ul>
         <form id="contact-form">
-          <label for="name">Name: </label>
           <input
             type="text"
-            id="name"
-            name="name"
-            placeholder="Your name"
+            name="from_name"
+            placeholder="Your Name"
             required
           />
-
-          <label for="email">Email: </label>
           <input
             type="email"
-            id="email"
-            name="email"
-            placeholder="Your email"
+            name="reply_to"
+            placeholder="Your Email"
             required
           />
-
-          <label for="message">Message: </label>
           <textarea
-            id="message"
-            name="message"
-            placeholder="Your message"
+            type="text"
+            name="subject"
+            placeholder="Subject (Optional)"
             required
           ></textarea>
-          <button type="submit">Send</button>
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            required
+          ></textarea>
+          <button type="submit" id="sendBtn">
+            <span class="btn-label">Send</span>
+            <!-- spinner -->
+            <svg class="icon spinner" viewBox="0 0 50 50" aria-hidden="true">
+              <circle
+                cx="25"
+                cy="25"
+                r="20"
+                fill="none"
+                stroke-width="4"
+              ></circle>
+            </svg>
+            <!-- checkmark -->
+            <svg class="icon check" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M4 12l6 6L20 6"
+                fill="none"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </button>
         </form>
       </section>
-          <button id ="back-to-top" aria-label="Back to top">↑</button>
+      <button id="back-to-top" aria-label="Back to top">↑</button>
     </main>
-
     <footer>
       <small
         >&copy; <span id="year"></span> Rahaul Goh. All rights reserved.</small
@@ -201,6 +221,9 @@
         document.getElementById("year").textContent = new Date().getFullYear();
       </script>
     </footer>
+    <div id="notification" class="hidden"></div>
     <script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="email.js"></script>
   </body>
 </html>
