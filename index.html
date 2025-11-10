@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rahaul Goh — Portfolio</title>
+  <meta name="description" content="Portfolio of Rahaul Goh — Intelligent Software Engineer. Projects in web development, machine learning, and data analysis." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero / Home -->
+    <section class="home-info" id="home" aria-labelledby="home-title">
+      <h1 id="home-title">Welcome to My Portfolio</h1>
+      <p>
+        Hi! I'm Rahaul, an Intelligent Software Engineer at Mplex Technology Sdn Bhd.
+        Explore my projects and get to know more about me.
+      </p>
+      <a href="#projects" class="btn">View My Projects</a>
+    </section>
+    <!-- About Me -->
+    <section class="about-me" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">About Me</h2>
+      <p>
+        I am a passionate software engineer building practical, user-focused solutions.
+        I specialize in web development, machine learning, and data analysis.
+      </p>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects" id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">My Projects</h2>
+
+      <div class="project-list">
+        <article class="project-item">
+          <h3>Project 1: An Investigation into Haptic Rendering in Virtual Reality</h3>
+          <p>
+            Explored the impact of haptic feedback on user experience in VR using a
+            lab-made 3D-printed haptic device. Ran user tests with and without haptics
+            to evaluate effectiveness. Read the full write-up
+            <a href="assets/fyp.pdf" target="_blank" rel="noopener">here (PDF)</a>.
+          </p>
+        </article>
+
+        <article class="project-item">
+          <h3>Project 2: StamPa</h3>
+          <p>
+            A loyalty-card platform for small businesses. Built with Flutter (app) and
+            Node.js (backend). Currently running surveys to gauge public interest.
+          </p>
+        </article>
+
+        <article class="project-item">
+          <h3>Project 3: This Portfolio Website</h3>
+          <p>
+            A responsive personal site built with HTML, CSS, and a sprinkle of JS to
+            showcase projects and contact info.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact Me</h2>
+      <p>If you'd like to get in touch, reach out via email or connect on LinkedIn/GitHub.</p>
+      <ul>
+        <li>Email: <a href="mailto:rahaulgoh@gmail.com">rahaulgoh@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/rahaulgoh/" target="_blank" rel="noopener">Rahaul Goh</a></li>
+        <li>GitHub: <a href="https://github.com/rahaulgoh" target="_blank" rel="noopener">rahaulgoh</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; <span id="year"></span> Rahaul Goh. All rights reserved.</small>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+</body>
+</html>
