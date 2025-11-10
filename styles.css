@@ -1,152 +1,238 @@
-/* Reset & quality-of-life */
+/* =========================================
+   0) Reset & Quality-of-life
+========================================= */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* =========================================
+   1) Theme Variables
+      - Dark is default on :root
+      - Light overrides via .light-mode on <html>
+========================================= */
 :root {
-    --bg: #222831;
-    --text: #DFD0B8;
-    --primary: #948979;
-    --secondary: #393E46;
-    --highlight: #7E99A3;
-    --surface: rgba(34, 40, 49, 0.98);
-    --project: #578E7E;
+  --bg: #222831;
+  --text: #DFD0B8;
+  --primary: #948979;
+  --secondary: #393E46;
+  --highlight: #7E99A3;
+  --surface: rgba(34, 40, 49, 0.98);
+  --project: #578E7E;
 }
 
+.light-mode {
+  --bg: #F0EDEE;
+  --text: #333333;
+  --primary: #497daa;
+  --secondary: #FFFFFF;
+  --highlight: #76b4a5;
+  --surface: rgba(240, 237, 238, 0.98);
+  --project: #4A6FA5;
+}
+
+/* =========================================
+   2) Base Typography & Elements
+========================================= */
 body {
-    background-color: var(--bg);
-    color: var(--text);
-    font-family:Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.5;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  line-height: 1.5;
 }
 
-header {
-    display: flex;
-    justify-content: center;
-    border-radius: 8px;
-    align-items: center;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, .25);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 1rem;
-    background-color: var(--bg);
-}
-
-h1, h2,h3{
-    color:var(--highlight);
-    margin-top: 0.25rem;     /* tighten space above */
-    margin-bottom: 0.25rem; /* tighten space below */
-}
-
-nav ul{
-    display: flex;
-    list-style: none;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-    gap:20px;
-}
-
-@media (max-width: 700px) {
-  nav ul {
-    flex-wrap: nowrap;          /* keep everything on one line */
-    justify-content: space-around; /* spread them evenly */
-    overflow-x: auto;           /* allow sideways scrolling if too tight */
-    -webkit-overflow-scrolling: touch; /* smooth scroll on mobile */
-    scrollbar-width: none;      /* hide scrollbar (Firefox) */
-  }
-
-  nav ul::-webkit-scrollbar {
-    display: none; /* hide scrollbar (Chrome/Safari) */
-  }
-
-  header nav a {
-    font-size: 0.9rem;          /* slightly smaller text */
-    padding: 0.5rem 0.6rem;     /* smaller hit area to fit nicely */
-    white-space: nowrap;        /* prevent wrapping to multiple lines */
-  }
-}
-
-header nav a{
-    display: inline-block;
-    padding: 0.5rem 0.75rem;
-    border-radius: .5rem;
-    transition: transform 0.3s ease, color 0.3s ease, background-color 0.3s ease;
-}
-
-header nav a:hover, header nav a:focus-visible{
-    background-color: var(--primary);
-    color: var(--bg);
-    outline: none;
-    text-decoration: none;
-    transform: scale(1.05);
+h1, h2, h3 {
+  color: var(--highlight);
+  margin: 0.25rem 0;
 }
 
 a {
-    color: var(--primary);
-    text-decoration: none;
+  color: var(--primary);
+  text-decoration: none;
 }
-
-a:hover {
-    text-decoration: underline;
-}
-
+a:hover { text-decoration: underline; }
 a:focus-visible {
-    outline: 2px dashed var(--highlight);
-    outline-offset: 2px;
+  outline: 2px dashed var(--highlight);
+  outline-offset: 2px;
 }
 
+/* =========================================
+   3) Layout: Header / Nav
+========================================= */
+header {
+  position: sticky; top: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: flex-start;
+  padding: 1rem;
+  background: var(--bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .25);
+}
+
+header nav {
+  position: relative;           /* for underline indicator */
+  display: flex; align-items: center;
+  width: 100%;
+}
+
+nav ul {
+  flex: 1;
+  display: flex; gap: 20px;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0; padding: 0;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+nav li { display: flex; align-items: center; }
+
+header nav a {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+  border-radius: .5rem;
+  transition: transform .3s ease, color .3s ease, background-color .3s ease;
+}
+header nav a:hover,
+header nav a:focus-visible {
+  background: var(--primary);
+  color: var(--bg);
+  text-decoration: none; /* indicator handles the underline look */
+  transform: scale(1.05);
+}
+header nav a.active { color: var(--highlight); }
+
+/* push theme switch to far right */
+#theme-switch { margin-left: auto; }
+
+/* Nav underline indicator (JS positions this) */
+#nav-indicator {
+  position: absolute; left: 0; bottom: 0;
+  height: 2px; width: 0;
+  background: var(--primary);
+  border-radius: 2px;
+  transform: translateX(0);
+  transition: transform .30s ease, width .30s ease, background-color .30s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* =========================================
+   4) Sections
+========================================= */
 section {
-    padding: 2rem;
-    max-width: 800px;
-    margin: auto;
-    background-color: var(--secondary);
-    transition: background-color 0.3s ease;
-    border-radius: 20px;
-    scroll-margin-top: 80px;
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  background: var(--secondary);
+  border-radius: 20px;
+  transition: background-color .3s ease;
+  scroll-margin-top: 80px;
 }
+section + section { margin: 1.5rem auto; }
 
-section + section {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-}
+/* If you meant .about-me, target that class (your old .about was unused) */
+.about-me h3 { padding-bottom: .5rem; }
 
-.project-item h3 {
-    color:var(--project);
-}
-
-.project-item {
-    background: var(--secondary);
-    border-radius: 12px;
-    padding: 1rem;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.project-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
+/* =========================================
+   5) Components
+========================================= */
+/* Projects grid/cards */
 .project-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
 }
-@media (max-width: 700px) {
-    .project-list {
-        grid-template-columns: 1fr;
-    }
+.project-item {
+  background: var(--secondary);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.project-item h3 { color: var(--project); }
+.project-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
+/* Contact form */
+form {
+  display: flex; flex-direction: column;
+  gap: .75rem; margin-top: 1rem;
+}
+input, textarea {
+  font: inherit;
+  padding: .6rem;
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  background: var(--secondary);     /* fixed: use var() */
+  color: var(--text);
+}
+button[type="submit"] {
+  background: var(--primary);
+  color: var(--bg);
+  border: none;
+  border-radius: 6px;
+  padding: .7rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background .3s ease, transform .2s ease;
+}
+button[type="submit"]:hover {
+  background: var(--highlight);
+  transform: scale(1.05);
+}
+
+/* Theme switch (sun/moon slider) */
+.switch { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; }
+.switch .track {
+  position: relative; width: 56px; height: 28px;
+  border-radius: 28px; background: var(--secondary);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.25);
+  display: inline-block; transition: background .3s ease, box-shadow .3s ease;
+}
+.switch .icon {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-size: 14px; line-height: 1; pointer-events: none; transition: opacity .25s ease;
+}
+.switch .icon.sun { left: 8px; }
+.switch .icon.moon { right: 8px; }
+.switch .thumb {
+  position: absolute; top: 2px; left: 2px; width: 24px; height: 24px;
+  border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.35);
+  transition: transform .28s ease;
+}
+/* Theme-dependent visuals for switch */
+:root:not(.light-mode) .switch .icon.sun { opacity: .35; }
+:root:not(.light-mode) .switch .icon.moon { opacity: 1; }
+:root.light-mode .switch .track { background: #eaecef; }
+:root.light-mode .switch .icon.sun { opacity: 1; }
+:root.light-mode .switch .icon.moon { opacity: .35; }
+:root.light-mode .switch .thumb { transform: translateX(28px); }
+/* Screen-reader only */
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* =========================================
+   6) Media Queries
+========================================= */
+@media (max-width: 700px) {
+  nav ul {
+    justify-content: flex-start;        /* keep auto-margin behavior */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  nav ul::-webkit-scrollbar { display: none; }
+
+  header nav a {
+    font-size: .9rem; padding: .5rem .6rem; white-space: nowrap;
+  }
+
+  .project-list { grid-template-columns: 1fr; }
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
-}
-
-.about h3 {
-    color: var(--highlight);
-    margin: 0;
-    padding-bottom: 0.5rem;
-    /* padding-top: 0.5rem; */
 }
