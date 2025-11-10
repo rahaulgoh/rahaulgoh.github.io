@@ -36,7 +36,8 @@ header {
 
 h1, h2,h3{
     color:var(--highlight);
-    margin-top:0;
+    margin-top: 0.25rem;     /* tighten space above */
+    margin-bottom: 0.25rem; /* tighten space below */
 }
 
 nav ul{
@@ -68,8 +69,6 @@ nav ul{
   }
 }
 
-
-
 header nav a{
     display: inline-block;
     padding: 0.5rem 0.75rem;
@@ -84,12 +83,13 @@ header nav a:hover, header nav a:focus-visible{
     text-decoration: none;
     transform: scale(1.05);
 }
-a{
+
+a {
     color: var(--primary);
     text-decoration: none;
 }
 
-a:hover{
+a:hover {
     text-decoration: underline;
 }
 
@@ -98,7 +98,7 @@ a:focus-visible {
     outline-offset: 2px;
 }
 
-section{
+section {
     padding: 2rem;
     max-width: 800px;
     margin: auto;
@@ -108,23 +108,23 @@ section{
     scroll-margin-top: 80px;
 }
 
-section + section{
+section + section {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
 }
 
-.project-item h3{
+.project-item h3 {
     color:var(--project);
 }
 
-.project-item{
+.project-item {
     background: var(--secondary);
     border-radius: 12px;
     padding: 1rem;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.project-item:hover{
+.project-item:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
@@ -142,4 +142,11 @@ section + section{
 
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
+}
+
+.about h3 {
+    color: var(--highlight);
+    margin: 0;
+    padding-bottom: 0.5rem;
+    /* padding-top: 0.5rem; */
 }
