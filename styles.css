@@ -707,16 +707,44 @@ section {
   border-radius: 12px;
   backface-visibility: hidden;
 
-  /* centered, tidy text layout */
+  /* centered, tidy text layout with scroll */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.35rem;
+  
+  /* Enable scrolling for overflow content */
+  overflow-y: auto;
+  overflow-x: hidden;
 
   /* Enhanced shadow for better depth */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.25s ease, border-color 0.25s ease;
+  
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+}
+
+/* Custom scrollbar for webkit browsers */
+.project-card .card-face::-webkit-scrollbar {
+  width: 4px;
+}
+
+.project-card .card-face::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.project-card .card-face::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 2px;
+  opacity: 0.3;
+}
+
+.project-card .card-face::-webkit-scrollbar-thumb:hover {
+  background-color: var(--highlight);
+  opacity: 0.6;
 }
 
 /* Front typography */
@@ -726,6 +754,8 @@ section {
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0 0 0.25rem 0;
+  text-align: center;
+  flex-shrink: 0; /* Prevent title from shrinking */
 }
 
 /* Subtext (tech stack) — lighter than title */
@@ -736,6 +766,17 @@ section {
   color: color-mix(in srgb, var(--text) 70%, transparent);
   letter-spacing: 0.2px;
   margin: 0;
+  text-align: center;
+  flex-shrink: 0; /* Prevent from shrinking */
+}
+
+/* Back face content */
+.project-card .card-back p {
+  text-align: center;
+  margin: 0.5rem 0;
+  flex: 1; /* Allow description to grow and trigger scroll if needed */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* Back face */
@@ -756,6 +797,8 @@ section {
   text-decoration: none;
   font-weight: 600;
   transition: transform 0.2s ease, background 0.25s ease;
+  flex-shrink: 0; /* Prevent button from shrinking */
+  margin-top: auto; /* Push button to bottom when scrolling is active */
 }
 .project-card .btn-link:hover {
   transform: translateY(-1px);
