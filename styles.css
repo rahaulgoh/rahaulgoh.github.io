@@ -790,6 +790,148 @@ section {
 /* =========================================
    6) Media Queries
 ========================================= */
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+  section {
+    padding: 1.5rem;
+    max-width: 700px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+  
+  section {
+    padding: 1.25rem;
+    margin: 1rem auto;
+  }
+  
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  h3 { font-size: 1.1rem; }
+  
+  /* Project cards responsive */
+  .project-card .card-inner {
+    min-height: 120px;
+    padding: 0.875rem;
+  }
+  
+  .project-card .card-face {
+    padding: 1rem 1.25rem;
+  }
+  
+  .project-card .card-front h3 {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+  
+  .project-card .card-front .muted,
+  .project-card .card-back .muted {
+    font-size: 0.85rem;
+  }
+  
+  .project-card .card-back p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  section {
+    padding: 1rem;
+    margin: 0.75rem auto;
+  }
+  
+  h1 { 
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+  h2 { font-size: 1.2rem; }
+  h3 { font-size: 1rem; }
+  
+  /* Project cards for mobile */
+  .project-card {
+    padding: 0.1rem;
+  }
+  
+  .project-card .card-inner {
+    min-height: 100px;
+    padding: 0.75rem;
+  }
+  
+  .project-card .card-face {
+    padding: 0.75rem 1rem;
+  }
+  
+  .project-card .card-front h3 {
+    font-size: 0.9rem;
+    line-height: 1.3;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .project-card .card-front .muted,
+  .project-card .card-back .muted {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+  
+  .project-card .card-back p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0.5rem 0;
+  }
+  
+  .project-card .btn-link {
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  body {
+    font-size: 13px;
+  }
+  
+  section {
+    padding: 0.875rem;
+  }
+  
+  .project-card .card-inner {
+    min-height: 90px;
+    padding: 0.65rem;
+  }
+  
+  .project-card .card-face {
+    padding: 0.65rem 0.875rem;
+  }
+  
+  .project-card .card-front h3 {
+    font-size: 0.85rem;
+    line-height: 1.25;
+  }
+  
+  .project-card .card-front .muted,
+  .project-card .card-back .muted {
+    font-size: 0.75rem;
+  }
+  
+  .project-card .card-back p {
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+}
+
 @media (max-width: 700px) {
   nav ul {
     justify-content: flex-start; /* keep auto-margin behavior */
