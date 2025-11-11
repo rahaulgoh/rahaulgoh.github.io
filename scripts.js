@@ -215,8 +215,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const rotateY = (e.clientX - centerX) / (rect.width / 2);
 
       // INVERTED: Apply tilt that follows mouse (tilts TOWARD cursor)
-      const tiltX = rotateX * 10; // Mouse down = bottom tilts toward you (positive X rotation)
-      const tiltY = rotateY * -10; // Mouse right = right side tilts toward you (negative Y rotation)
+      const tiltX = rotateX * 4; // Mouse down = bottom tilts toward you (positive X rotation)
+      const tiltY = rotateY * -4; // Mouse right = right side tilts toward you (negative Y rotation)
 
       // Set CSS custom properties for tilt
       cardInner.style.setProperty("--tilt-x", `${tiltX}deg`);
