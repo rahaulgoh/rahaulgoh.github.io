@@ -168,34 +168,10 @@ section.visible {
   transform: none;
 }
 
-/* If you meant .about-me, target that class (your old .about was unused) */
-/* .about-me h3 {
-  padding-bottom: 0.5rem;
-} */
 
 /* =========================================
    5) Components
 ========================================= */
-/* Projects grid/cards */
-.project-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1rem;
-}
-.project-item {
-  background: var(--secondary);
-  border-radius: 12px;
-  padding: 1rem;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.project-item h3 {
-  color: var(--project);
-}
-.project-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
 /* Contact form */
 form {
   display: flex;
@@ -479,6 +455,134 @@ input:focus, textarea:focus {
   opacity: 1;
   transform: translateY(0);
 }
+/* Flip card for Projects */
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 0.4rem 0.4rem !important;
+}
+
+.project-item {
+  background: var(--secondary);
+  border-radius: 12px;
+  /* padding: 1rem; */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.project-item h3 {
+  color: var(--project);
+}
+.project-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+/* 3D container */
+.project-card {
+  perspective: 1200px;
+  padding: 0.2rem;
+}
+
+/* Clickable inner panel */
+.project-card .card-inner {
+  position: relative;
+  width: 100%;
+  min-height: 140px;                   /* match your old height; tweak if needed */
+  background: transparent;
+  border: 0;
+  padding: 1rem;
+  cursor: pointer;
+  outline-offset: 4px;
+  display: block;
+
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(.22,.61,.36,1), box-shadow .3s ease;
+  border-radius: 12px;
+}
+
+/* Accessible focus ring on the whole card */
+.project-card .card-inner:focus-visible {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--highlight) 55%, transparent);
+}
+
+/* Flipped state */
+.project-card .card-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+/* Faces (front & back) */
+.project-card .card-face {
+  position: absolute;
+  inset: 0;
+  padding: 1.25rem 1.5rem;             /* inner padding you asked for */
+  background: var(--secondary);
+  border-radius: 12px;                  /* keep corners consistent */
+  backface-visibility: hidden;
+
+  /* centered, tidy text layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+
+  /* no default shadow – you wanted clean until hover */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+/* Front typography */
+.project-card .card-front h3 { 
+  color: var(--project);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 .25rem 0;
+}
+
+/* Subtext (tech stack) — lighter than title */
+.project-card .card-front .muted,
+.project-card .card-back .muted {
+  font-size: .95rem;
+  font-weight: 400;
+  color: color-mix(in srgb, var(--text) 70%, transparent);
+  letter-spacing: .2px;
+  margin: 0;
+}
+
+/* Back face */
+.project-card .card-back {
+  transform: rotateY(180deg);
+  background: color-mix(in srgb, var(--secondary) 92%, var(--project) 8%);
+}
+
+/* Link button on back */
+.project-card .btn-link {
+  display: inline-block;
+  margin-top: .6rem;
+  padding: .45rem .75rem;
+  border-radius: 8px;
+  background: var(--primary);
+  color: var(--bg);
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform .2s ease, background .25s ease;
+}
+.project-card .btn-link:hover {
+  transform: translateY(-1px);
+  background: var(--hover-send);
+}
+
+/* Only show a subtle shadow on hover/focus */
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover .card-inner:not(.is-flipped) .card-face {
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  }
+}
+.project-card .card-inner:focus-visible .card-face {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--highlight) 55%, transparent);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .project-card .card-inner { transition: none; }
+}
 
 /* =========================================
    6) Media Queries
@@ -498,10 +602,6 @@ input:focus, textarea:focus {
     font-size: 0.9rem;
     padding: 0.5rem 0.6rem;
     white-space: nowrap;
-  }
-
-  .project-list {
-    grid-template-columns: 1fr;
   }
 }
 

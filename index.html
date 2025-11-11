@@ -95,39 +95,112 @@
       <section class="projects" id="projects" aria-labelledby="projects-title">
         <h2 id="projects-title">My Projects</h2>
 
-        <div class="project-list">
-          <article class="project-item">
-            <h3>
-              Project 1: An Investigation into Haptic Rendering in Virtual
-              Reality
-            </h3>
-            <p>
-              Explored the impact of haptic feedback on user experience in VR
-              using a lab-made 3D-printed haptic device. Ran user tests with and
-              without haptics to evaluate effectiveness. Read the full write-up
-              <a href="assets/fyp.pdf" target="_blank" rel="noopener"
-                >here (PDF)</a
-              >.
-            </p>
-          </article>
+        <article class="project-card" data-project="stampa">
+          <button
+            class="card-inner"
+            aria-expanded="false"
+            aria-label="View details for Haptic VR Project"
+          >
+            <!-- FRONT -->
+            <div class="card-face card-front">
+              <h3>
+                Project 1: An Investigation into Haptic Rendering in Virtual
+                Reality
+              </h3>
+              <p class="muted">C# · Unity · Arduino</p>
+            </div>
+            <!-- BACK -->
+            <div class="card-face card-back">
+              <h3>Project 1</h3>
+              <p class="muted">
+                Explored the impact of haptic feedback on user experience in VR
+                using a lab-made 3D-printed haptic device. Ran user tests with
+                and without haptics to evaluate effectiveness. Read the full
+                write-up
+              </p>
+              <a classs="btn-link" href="/projects/hapticvr.html"
+                >Open Project Page -></a
+              >
+            </div>
+          </button>
+        </article>
 
-          <article class="project-item">
-            <h3>Project 2: StamPa</h3>
-            <p>
-              A loyalty-card platform for small businesses. Built with Flutter
-              (app) and Node.js (backend). Currently running surveys to gauge
-              public interest.
-            </p>
-          </article>
+        <article class="project-card" data-project="stampa">
+          <button
+            class="card-inner"
+            aria-expanded="false"
+            aria-label="View details for StamPa Project"
+          >
+            <!-- FRONT -->
+            <div class="card-face card-front">
+              <h3>Project 2: StamPa</h3>
+              <p class="muted">Flutter · Node.js</p>
+            </div>
+            <!-- BACK -->
+            <div class="card-face card-back">
+              <h3>Project 2</h3>
+              <p class="muted">
+                A loyalty-card platform for small businesses. Built with Flutter
+                (app) and Node.js (backend). Currently running surveys to gauge
+                public interest.
+              </p>
+              <a classs="btn-link" href="/projects/stampa.html"
+                >Open Project Page -></a
+              >
+            </div>
+          </button>
+        </article>
 
-          <article class="project-item">
-            <h3>Project 3: This Portfolio Website</h3>
-            <p>
-              A responsive personal site built with HTML, CSS, and a sprinkle of
-              JS to showcase projects and contact info.
-            </p>
-          </article>
-        </div>
+        <article class="project-card" data-project="portfolio-website">
+          <button
+            class="card-inner"
+            aria-expanded="false"
+            aria-label="View details for Website Portfolio"
+          >
+            <!-- FRONT -->
+            <div class="card-face card-front">
+              <h3>Project 3: This Portfolio Website</h3>
+              <p class="muted">HTML · CSS · Javascript</p>
+            </div>
+            <!-- BACK -->
+            <div class="card-face card-back">
+              <h3>Project 3</h3>
+              <p class="muted">
+                A responsive personal site built with HTML, CSS, and a sprinkle
+                of JS to showcase projects and contact info.
+              </p>
+              <a classs="btn-link" href="/projects/portfolio-website.html"
+                >Open Project Page -></a
+              >
+            </div>
+          </button>
+        </article>
+
+        <article class="project-card" data-project="wpf-tcpip-client">
+          <button
+            class="card-inner"
+            aria-expanded="false"
+            aria-label="View details for WPF TCP/IP Client"
+          >
+            <!-- FRONT -->
+            <div class="card-face card-front">
+              <h3>Project 4: WPF TCP/IP Client</h3>
+              <p class="muted">C# · WPF · TCP/IP</p>
+            </div>
+            <!-- BACK -->
+            <div class="card-face card-back">
+              <h3>Project 4</h3>
+              <p class="muted">
+                A WPF desktop application that communicates with a TCP/IP server
+                to send and receive data. Features a user-friendly interface and
+                robust error handling.
+              </p>
+              <a classs="btn-link" href="/projects/wpf-tcpip-client.html"
+                >Open Project Page -></a
+              >
+            </div>
+          </button>
+        </article>
       </section>
 
       <!-- Contact -->
@@ -213,6 +286,7 @@
       </section>
       <button id="back-to-top" aria-label="Back to top">↑</button>
     </main>
+    <!-- Footer -->
     <footer>
       <small
         >&copy; <span id="year"></span> Rahaul Goh. All rights reserved.</small

@@ -181,3 +181,35 @@ document.addEventListener("mousemove", (e) => {
   glow.style.left = `${e.clientX}px`;
   glow.style.top = `${e.clientY}px`;
 });
+
+/* Flip cards for projects */
+document.addEventListener('DOMContentLoaded', () => {
+  const cards = document.querySelectorAll('.project-card .card-inner');
+
+  cards.forEach(btn => {
+    const toggle = () => {
+      const flipped = btn.classList.toggle('is-flipped');
+      btn.setAttribute('aria-expanded', String(flipped));
+    };
+
+    btn.addEventListener('click', (e) => {
+      // Ignore clicks on back-face links so navigation still works
+      if (e.target.closest('a')) return;
+      toggle();
+    });
+
+    btn.addEventListener('keydown', (e) => {
+      // space or enter flips
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        toggle();
+      }
+      // Escape flips back
+      if (e.key === 'Escape' && btn.classList.contains('is-flipped')) {
+        e.preventDefault();
+        btn.classList.remove('is-flipped');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+});
