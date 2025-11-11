@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       // fake delay for demo purposes without wasting my quota
-      await new Promise((resolve) => setTimeout(resolve, 1000)); // simulate delay
+      // await new Promise((resolve) => setTimeout(resolve, 1000)); // simulate delay
       // uncomment below when ready to deploy.
-      // await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form);
+      await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form);
       form.reset();
 
       // success state
