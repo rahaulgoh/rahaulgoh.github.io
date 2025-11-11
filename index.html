@@ -8,6 +8,9 @@
       name="description"
       content="Portfolio of Rahaul Goh — Intelligent Software Engineer. Projects in web development, machine learning, and data analysis."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -27,8 +30,8 @@
               aria-label="Toggle theme"
             >
               <span class="track" aria-hidden="true">
-                <span class="icon sun">☀️</span>
-                <span class="icon moon">🌙</span>
+                <span class="icon sun">Light</span>
+                <span class="icon moon">Dark</span>
                 <span class="thumb"></span>
               </span>
               <span class="visually-hidden">Toggle theme</span>
@@ -77,6 +80,9 @@
           <li>Web Development: HTML, CSS, Node.js, ASP.NET, Blazor, WPF</li>
           <li>Machine Learning: Scikit-learn, Python</li>
           <li>Data Analysis: Pandas, NumPy, Matplotlib</li>
+          <li>Postman API Testing: C#, Postman</li>
+          <li>Git and Version Control: Git, GitHub</li>
+          <li>SQL: PostGreSQL, SQLYog (MySQL)</li>
         </ul>
         <h3 id="work-title">Work Experience</h3>
         <ul id="work-list">
@@ -95,7 +101,7 @@
       <section class="projects" id="projects" aria-labelledby="projects-title">
         <h2 id="projects-title">My Projects</h2>
 
-        <article class="project-card" data-project="stampa">
+        <article class="project-card" data-project="hapticvr">
           <button
             class="card-inner"
             aria-expanded="false"
@@ -111,15 +117,14 @@
             </div>
             <!-- BACK -->
             <div class="card-face card-back">
-              <h3>Project 1</h3>
               <p class="muted">
                 Explored the impact of haptic feedback on user experience in VR
                 using a lab-made 3D-printed haptic device. Ran user tests with
                 and without haptics to evaluate effectiveness. Read the full
                 write-up
               </p>
-              <a classs="btn-link" href="/projects/hapticvr.html"
-                >Open Project Page -></a
+            <a class="btn-link" href="./projects/hapticvr.html"
+                >Open Project Page →</a
               >
             </div>
           </button>
@@ -138,14 +143,13 @@
             </div>
             <!-- BACK -->
             <div class="card-face card-back">
-              <h3>Project 2</h3>
               <p class="muted">
                 A loyalty-card platform for small businesses. Built with Flutter
                 (app) and Node.js (backend). Currently running surveys to gauge
                 public interest.
               </p>
-              <a classs="btn-link" href="/projects/stampa.html"
-                >Open Project Page -></a
+              <a class="btn-link" href="./projects/stampa.html"
+                >Open Project Page →</a
               >
             </div>
           </button>
@@ -164,13 +168,12 @@
             </div>
             <!-- BACK -->
             <div class="card-face card-back">
-              <h3>Project 3</h3>
               <p class="muted">
                 A responsive personal site built with HTML, CSS, and a sprinkle
                 of JS to showcase projects and contact info.
               </p>
-              <a classs="btn-link" href="/projects/portfolio-website.html"
-                >Open Project Page -></a
+              <a class="btn-link" href="./projects/portfolio-website.html"
+                >Open Project Page →</a
               >
             </div>
           </button>
@@ -189,14 +192,13 @@
             </div>
             <!-- BACK -->
             <div class="card-face card-back">
-              <h3>Project 4</h3>
               <p class="muted">
                 A WPF desktop application that communicates with a TCP/IP server
                 to send and receive data. Features a user-friendly interface and
                 robust error handling.
               </p>
-              <a classs="btn-link" href="/projects/wpf-tcpip-client.html"
-                >Open Project Page -></a
+              <a class="btn-link" href="./projects/wpf-tcpip-client.html"
+                >Open Project Page →</a
               >
             </div>
           </button>
@@ -286,7 +288,6 @@
       </section>
       <button id="back-to-top" aria-label="Back to top">↑</button>
     </main>
-    <!-- Footer -->
     <footer>
       <small
         >&copy; <span id="year"></span> Rahaul Goh. All rights reserved.</small

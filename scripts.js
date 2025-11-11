@@ -67,26 +67,20 @@ if (savedTheme === "light") {
 
 // Toggle and save new preference
 toggle.addEventListener("click", () => {
+  // enable temporary transition
+  root.classList.add("theme-animating");
+
+  // flip theme + persist
   root.classList.toggle("light-mode");
   localStorage.setItem(
     "theme",
     root.classList.contains("light-mode") ? "light" : "dark"
   );
-});
 
-/* Contact form with Validation */
-document.querySelector("form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const name = document.querySelector("#name").value.trim();
-  const email = document.querySelector("#email").value.trim();
-  if (!name || !email.includes("@")) {
-    alert("Please enter a valid name and email address.");
-    return;
-  }
-  alert(
-    "Thank you for reaching out, " + name + "! I will get back to you soon."
-  );
-  e.target.reset();
+  // remove the transition class after it finishes
+  window.setTimeout(() => {
+    root.classList.remove("theme-animating");
+  }, 1000); // matches .35s + a little buffer
 });
 
 /* Typewriter Effect for Home Section */
@@ -133,7 +127,7 @@ function updateGreeting() {
   const greetingEl = document.getElementById("greeting");
   let greeting = "Hello there";
 
-  if(hours < 12) greeting = "Good Morning";
+  if (hours < 12) greeting = "Good Morning";
   else if (hours < 18) greeting = "Good Afternoon";
   else greeting = "Good Evening";
 
@@ -146,7 +140,7 @@ updateGreeting();
 const backToTopBtn = document.getElementById("back-to-top");
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 400) backToTopBtn.classList.add("visible"); 
+  if (window.scrollY > 400) backToTopBtn.classList.add("visible");
   else backToTopBtn.classList.remove("visible");
 });
 
@@ -155,61 +149,86 @@ backToTopBtn.addEventListener("click", () => {
 });
 
 /* Fade-in Scroll */
-const observerFade = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.2 });
+const observerFade = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
 
-document.querySelectorAll('section').forEach(sec => observerFade.observe(sec));
-
-/* Parallax background */
-window.addEventListener("scroll", () => {
-  const home = document.querySelector(".home-info");
-  const offset = window.scrollY * 0.4;
-  home.style.backgroundPositionY = `${offset}px`;
-})
-
-/* Glow for cursor */
-const glow = document.createElement("div");
-glow.id = "cursor-glow";
-document.body.appendChild(glow);
-
-document.addEventListener("mousemove", (e) => {
-  glow.style.left = `${e.clientX}px`;
-  glow.style.top = `${e.clientY}px`;
-});
+document
+  .querySelectorAll("section")
+  .forEach((sec) => observerFade.observe(sec));
 
 /* Flip cards for projects */
-document.addEventListener('DOMContentLoaded', () => {
-  const cards = document.querySelectorAll('.project-card .card-inner');
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".project-card .card-inner");
 
-  cards.forEach(btn => {
+  cards.forEach((btn) => {
     const toggle = () => {
-      const flipped = btn.classList.toggle('is-flipped');
-      btn.setAttribute('aria-expanded', String(flipped));
+      const flipped = btn.classList.toggle("is-flipped");
+      btn.setAttribute("aria-expanded", String(flipped));
     };
 
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener("click", (e) => {
       // Ignore clicks on back-face links so navigation still works
-      if (e.target.closest('a')) return;
+      if (e.target.closest("a")) return;
       toggle();
     });
 
-    btn.addEventListener('keydown', (e) => {
+    btn.addEventListener("keydown", (e) => {
       // space or enter flips
-      if (e.key === ' ' || e.key === 'Enter') {
+      if (e.key === " " || e.key === "Enter") {
         e.preventDefault();
         toggle();
       }
       // Escape flips back
-      if (e.key === 'Escape' && btn.classList.contains('is-flipped')) {
+      if (e.key === "Escape" && btn.classList.contains("is-flipped")) {
         e.preventDefault();
-        btn.classList.remove('is-flipped');
-        btn.setAttribute('aria-expanded', 'false');
+        btn.classList.remove("is-flipped");
+        btn.setAttribute("aria-expanded", "false");
       }
+    });
+  });
+});
+
+/* 3D Tilt effect for project cards */
+document.addEventListener("DOMContentLoaded", () => {
+  const projectCards = document.querySelectorAll(".project-card");
+
+  projectCards.forEach((card) => {
+    const cardInner = card.querySelector(".card-inner");
+
+    card.addEventListener("mousemove", (e) => {
+      if (!cardInner) return;
+
+      const rect = card.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      // Calculate mouse position relative to card center (-1 to 1)
+      const rotateX = (e.clientY - centerY) / (rect.height / 2);
+      const rotateY = (e.clientX - centerX) / (rect.width / 2);
+
+      // INVERTED: Apply tilt that follows mouse (tilts TOWARD cursor)
+      const tiltX = rotateX * 10; // Mouse down = bottom tilts toward you (positive X rotation)
+      const tiltY = rotateY * -10; // Mouse right = right side tilts toward you (negative Y rotation)
+
+      // Set CSS custom properties for tilt
+      cardInner.style.setProperty("--tilt-x", `${tiltX}deg`);
+      cardInner.style.setProperty("--tilt-y", `${tiltY}deg`);
+    });
+
+    // Reset tilt when mouse leaves
+    card.addEventListener("mouseleave", () => {
+      if (!cardInner) return;
+
+      cardInner.style.setProperty("--tilt-x", "0deg");
+      cardInner.style.setProperty("--tilt-y", "0deg");
     });
   });
 });
