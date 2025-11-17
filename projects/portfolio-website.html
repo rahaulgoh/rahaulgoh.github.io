@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio Website</title>
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="./portfolio-website.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="./portfolio-website.css" />
+  </head>
+  <body>
     <header>
       <nav aria-label="Primary">
         <ul>
@@ -21,8 +21,8 @@
               aria-label="Toggle theme"
             >
               <span class="track" aria-hidden="true">
-                <span class="icon sun">☀️</span>
-                <span class="icon moon">🌙</span>
+                <span class="icon sun">Light</span>
+                <span class="icon moon">Dark</span>
                 <span class="thumb"></span>
               </span>
               <span class="visually-hidden">Toggle theme</span>
@@ -32,4 +32,65 @@
         <span id="nav-indicator" aria-hidden="true"></span>
       </nav>
     </header>
+    <main>
+      <section class="project-intro">
+        <h1>Portfolio Website</h1>
+        <p>
+          A responsive, from-scratch portfolio built to showcase my projects,
+          experiment with UI ideas, and practice clean, maintainable front-end
+          code.
+        </p>
+      </section>
+
+      <section class="project-details">
+        <h2>About This Project</h2>
+        <p>
+          This site started as a way to learn modern HTML, CSS, and vanilla
+          JavaScript without relying on frameworks. I wanted something fast,
+          minimal, and easy to maintain while still feeling polished and
+          interactive.
+        </p>
+      </section>
+
+      <section class="project-features">
+        <h2>Key Features</h2>
+        <ul>
+          <li>Flip-card project showcase with keyboard accessibility.</li>
+          <li>
+            Light/dark theme toggle with preference saved to
+            <code>localStorage</code>.
+          </li>
+          <li>Smooth scroll, section fade-ins, and a back-to-top button.</li>
+          <li>
+            Contact form wired up with EmailJS and custom notification banner.
+          </li>
+        </ul>
+      </section>
+
+      <section class="project-tech">
+        <h2>Technologies Used</h2>
+        <p>
+          <strong>Frontend:</strong> HTML5, modern CSS (custom properties, grid,
+          animations), vanilla JavaScript for interactivity and state (theme,
+          nav indicator, flip cards).
+        </p>
+        <p>
+          <strong>Tools:</strong> EmailJS for contact form handling, GitHub for
+          version control.
+        </p>
+      </section>
+
+      <section class="project-learnings">
+        <h2>Lessons Learned</h2>
+        <p>
+          Building this site taught me how much you can do without a framework:
+          handling state (themes, active nav links), animating UI elements, and
+          structuring CSS so it scales well across devices without being
+          bloated.
+        </p>
+      </section>
+    </main>
+
+    <script src="../scripts.js"></script>
+  </body>
 </html>

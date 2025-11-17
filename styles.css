@@ -456,8 +456,7 @@ section {
       rgba(126, 153, 163, 0.2) 75%,
       rgba(34, 40, 49, 0.95) 100%
     ),
-    radial-gradient(ellipse at top left, var(--secondary) 1%, transparent 50%),
-    radial-gradient(ellipse at bottom right, var(--primary) 0%, transparent 50%);
+    radial-gradient(ellipse at bottom right, var(--highlight) 0%, transparent 50%);
   background-size: 200% 200%, 100% 100%, 100% 100%;
   background-attachment: fixed;
   background-position: 0% 0%;

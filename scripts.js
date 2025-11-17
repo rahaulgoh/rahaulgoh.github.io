@@ -117,6 +117,7 @@ function typeWriter(element, text, speed = 75, delay = 1500) {
 // Run the typewriter on page load:
 window.addEventListener("DOMContentLoaded", () => {
   const heading = document.getElementById("home-title");
+  if(!heading) return;  
   const fullText = heading.textContent.trim();
   typeWriter(heading, fullText, 70, 2000);
 });
@@ -139,14 +140,17 @@ updateGreeting();
 /* Back to Top Button */
 const backToTopBtn = document.getElementById("back-to-top");
 
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 400) backToTopBtn.classList.add("visible");
-  else backToTopBtn.classList.remove("visible");
-});
+if (backToTopBtn) {
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 400) backToTopBtn.classList.add("visible");
+    else backToTopBtn.classList.remove("visible");
+  });
 
-backToTopBtn.addEventListener("click", () => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
 
 /* Fade-in Scroll */
 const observerFade = new IntersectionObserver(
