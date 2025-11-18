@@ -1,3 +1,9 @@
+/* Override the fade-in animation for project detail pages */
+section {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 h1, h2, h3, p{
     margin: 10px;
 }

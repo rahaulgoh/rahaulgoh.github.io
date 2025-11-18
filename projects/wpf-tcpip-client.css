@@ -1,0 +1,25 @@
+/* Override the fade-in animation for project detail pages */
+section {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Project detail specific styles */
+.project-detail {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.project-detail h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.project-images img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

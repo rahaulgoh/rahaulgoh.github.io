@@ -161,12 +161,23 @@ const observerFade = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.2 }
+  { threshold: 0.1 }
 );
 
 document
   .querySelectorAll("section")
   .forEach((sec) => observerFade.observe(sec));
+
+// Make sections already in viewport visible immediately on page load
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("section").forEach((sec) => {
+    const rect = sec.getBoundingClientRect();
+    // If section is in viewport (even partially), make it visible
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      sec.classList.add("visible");
+    }
+  });
+});
 
 /* Flip cards for projects */
 document.addEventListener("DOMContentLoaded", () => {
