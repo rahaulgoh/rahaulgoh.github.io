@@ -726,6 +726,11 @@ section {
   scrollbar-color: var(--primary) transparent;
 }
 
+.project-card .card-front {
+  justify-content: center;    /* vertical centering */
+}
+
+
 /* Custom scrollbar for webkit browsers */
 .project-card .card-face::-webkit-scrollbar {
   width: 4px;
