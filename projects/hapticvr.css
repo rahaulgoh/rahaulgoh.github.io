@@ -18,4 +18,42 @@ h3 {
   background: var(--secondary);
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.pdf-container iframe {
+  border: none;
+  border-radius: 10px;
+}
+
+.pdf-fallback {
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.pdf-fallback a {
+  color: var(--primary);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .pdf-container {
+    margin: 10px;
+    padding: 5px;
+  }
+  
+  .pdf-container iframe {
+    height: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-container iframe {
+    height: 500px;
+  }
 }
